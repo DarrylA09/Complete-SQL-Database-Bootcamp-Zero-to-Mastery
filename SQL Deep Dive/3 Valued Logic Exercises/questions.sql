@@ -7,6 +7,9 @@
 SELECT address2 
 FROM customers
 
+SELECT coalesce(address2, 'No Address') as  "Address2"
+FROM customers
+
 /*
 * DB: Store
 * Table: customers
@@ -17,6 +20,10 @@ SELECT *
 FROM customers
 WHERE COALESCE(address2, null) IS NOT null;
 
+SELECT *
+FROM customers
+WHERE address2 IS NOT null;
+
 /*
 * DB: Store
 * Table: customers
@@ -25,3 +32,11 @@ WHERE COALESCE(address2, null) IS NOT null;
 
 SELECT coalesce(lastName, 'Empty'), * from customers
 where (age = null);
+
+
+SELECT *, coalesce(lastName, 'Empty') as "Last name"
+from customers
+where age is null;  
+
+
+
